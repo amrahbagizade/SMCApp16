@@ -1,9 +1,7 @@
 package dao;
-
 import DB.DBConfig;
 import entity.Student;
 import util.ApplicationUtil;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
