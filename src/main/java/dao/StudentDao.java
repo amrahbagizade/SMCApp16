@@ -18,7 +18,7 @@ public class StudentDao {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
-            connection = DBConfig.getConnection1(); //database ile yaratdigimiz connection-a qosuluruq
+            connection = DBConfig.getConnection1(); //database ile yaratdigimiza connection-la qosuluruq
             String sql = "INSERT INTO SMAppOne.student(name,surname,email,phone) VALUES(?,?,?,?)";
             if (Objects.nonNull(connection)) //Connection eger null deyilse ishlesin
             {
@@ -137,5 +137,27 @@ try{
     statement.close();
 
 }  return isUpdated;
+    }
+
+
+    public static void deleteStudent(Long id) throws SQLException {
+        Connection connection=null;
+        PreparedStatement statement=null;
+        String sql="DELETE FROM SMAppOne.student WHERE id=?";
+        try {
+            connection = DBConfig.getConnection1();
+            if (Objects.nonNull(connection)) {
+                statement = connection.prepareStatement(sql);
+                statement.setLong(1, id);
+                statement.execute();
+            }
+        }catch (SQLException ex){
+            ApplicationUtil.printError("Bazada melumat tapilmadi ");
+
+        }
+        finally {
+            connection.close();
+            statement.close();
+        }
     }
 }

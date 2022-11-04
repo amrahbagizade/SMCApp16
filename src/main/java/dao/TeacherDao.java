@@ -140,4 +140,27 @@ public class TeacherDao {
 
         }  return isUpdated;
     }
+
+
+    public static void deleteTeacher(Long id) throws SQLException {
+        Connection connection=null;
+        PreparedStatement statement=null;
+        String sql="DELETE FROM TMAppOne.teacher WHERE id=?";
+        try {
+            connection = DBConfig.getConnection2();
+            if (Objects.nonNull(connection)) {
+                statement = connection.prepareStatement(sql);
+                statement.setLong(1, id);
+                statement.execute();
+            }
+        }catch (SQLException ex){
+            ApplicationUtil.printError("Bazada melumat tapilmadi ");
+
+        }
+        finally {
+            connection.close();
+            statement.close();
+        }
+    }
 }
+

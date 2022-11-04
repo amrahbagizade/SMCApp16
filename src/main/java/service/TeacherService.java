@@ -92,6 +92,7 @@ public final class TeacherService {
         getAllTeachers();
         System.out.println("Silmek istediyiniz muellimin ID-sini daxil edin:");
         String id = input.nextLine();
-        DB.teachersTable.remove(id);
+        TeacherDao.deleteTeacher(Long.valueOf(id));
+      //  DB.teachersTable.remove(id);
     }
 }

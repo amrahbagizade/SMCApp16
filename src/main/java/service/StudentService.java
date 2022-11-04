@@ -96,7 +96,8 @@ public final class StudentService {
         getAllStudents();
         System.out.println("Silmek uchun telebenin ID-sini daxil edin:");
         String id = input.nextLine();
-        DB.studentsTable.remove(id);
+StudentDao.deleteStudent(Long.valueOf(id));
+        //        DB.studentsTable.remove(id);
 
 
     }
