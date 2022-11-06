@@ -19,14 +19,14 @@ public class StudentDao {
         PreparedStatement statement = null;
         try {
             connection = DBConfig.getConnection1(); //database ile yaratdigimiza connection-la qosuluruq
-            String sql = "INSERT INTO SMAppOne.student(name,surname,email,phone) VALUES(?,?,?,?)";
+            String sql = "INSERT INTO SMAppOne.student(s_name,s_surname,s_email,s_phone) VALUES(?,?,?,?)";
             if (Objects.nonNull(connection)) //Connection eger null deyilse ishlesin
             {
                 statement = connection.prepareStatement(sql); //sql-i connection ucun hazirla ve menimset statement-a
-                statement.setString(1, student.getName());
-                statement.setString(2, student.getSurname());
-                statement.setString(3, student.getEmail());
-                statement.setString(4, student.getPhone());
+                statement.setString(1, student.getS_name());
+                statement.setString(2, student.getS_surname());
+                statement.setString(3, student.getS_email());
+                statement.setString(4, student.getS_phone());
                 statement.execute(); //icini doldurduqdan sonra statement-i play et
             }
         } catch (Exception ex) {
@@ -42,7 +42,7 @@ public class StudentDao {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;  //Bu bizim javadaki cedvelimizdir.
-        String sql = "SELECT s.id,s.name, s.surname, s.email, s.phone FROM smappone.student s";
+        String sql = "SELECT s.id,s.s_name, s.s_surname, s.s_email, s.s_phone FROM smappone.student s";
         try {
             connection = DBConfig.getConnection1();
             if (Objects.nonNull(connection)) {
@@ -52,10 +52,10 @@ public class StudentDao {
                 while (resultSet.next()) {
                     Student student = new Student();
                     student.setId(resultSet.getLong("ID"));
-                    student.setName(resultSet.getString("NAME"));
-                    student.setSurname(resultSet.getString("SURNAME"));
-                    student.setEmail(resultSet.getString("EMAIL"));
-                    student.setPhone(resultSet.getString("PHONE"));
+                    student.setS_name(resultSet.getString("S_NAME"));
+                    student.setS_surname(resultSet.getString("S_SURNAME"));
+                    student.setS_email(resultSet.getString("S_EMAIL"));
+                    student.setS_phone(resultSet.getString("S_PHONE"));
                     students.add(student);
                 }
             }
@@ -77,7 +77,7 @@ public class StudentDao {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;  //Bu bizim javadaki cedvelimizdir.
-        String sql = "SELECT s.id,s.name, s.surname, s.email, s.phone FROM SMAppOne.student s WHERE s.id=?";
+        String sql = "SELECT s.id,s.s_name, s.s_surname, s.s_email, s.s_phone FROM SMAppOne.student s WHERE s.id=?";
         try {
             connection = DBConfig.getConnection1();
             if (Objects.nonNull(connection)) {
@@ -89,10 +89,10 @@ public class StudentDao {
                 while (resultSet.next()) { //Cedveli oxuyuruq
 
                     student.setId(resultSet.getLong("ID"));
-                    student.setName(resultSet.getString("NAME"));
-                    student.setSurname(resultSet.getString("SURNAME"));
-                    student.setEmail(resultSet.getString("EMAIL"));
-                    student.setPhone(resultSet.getString("PHONE"));
+                    student.setS_name(resultSet.getString("S_NAME"));
+                    student.setS_surname(resultSet.getString("S_SURNAME"));
+                    student.setS_email(resultSet.getString("S_EMAIL"));
+                    student.setS_phone(resultSet.getString("S_PHONE"));
                     students.add(student); // cedveli yigiriq obyektin icine
                 }
 
@@ -114,17 +114,17 @@ public class StudentDao {
         boolean isUpdated = false;
         Connection connection = null;
         PreparedStatement statement = null;
-        String sql = "UPDATE SMAppOne.student s Set s.name=?, s.surname=?, s.email=?, s.phone=? Where s.id=?";
+        String sql = "UPDATE SMAppOne.student s Set s.s_name=?, s.s_surname=?, s.s_email=?, s.s_phone=? Where s.id=?";
 
 try{
     connection = DBConfig.getConnection1(); //database ile yaratdigimiz connection-a qosuluruq
     if (Objects.nonNull(connection)) //Connection eger null deyilse ishlesin
     {
         statement = connection.prepareStatement(sql); //sql-i connection ucun hazirla ve menimset statement-a
-        statement.setString(1, student.getName());
-        statement.setString(2, student.getSurname());
-        statement.setString(3, student.getEmail());
-        statement.setString(4, student.getPhone());
+        statement.setString(1, student.getS_name());
+        statement.setString(2, student.getS_surname());
+        statement.setString(3, student.getS_email());
+        statement.setString(4, student.getS_phone());
         statement.setLong(5,student.getId());
         statement.execute(); //icini doldurduqdan sonra statement-i play et
         isUpdated = true;

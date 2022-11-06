@@ -18,7 +18,7 @@ public class TeacherDao {
         PreparedStatement statement = null;
         try {
             connection = DBConfig.getConnection2(); //database ile yaratdigimiz connection-a qosuluruq
-            String sql = "INSERT INTO TMAppOne.teacher(namess,surname,email,phone) VALUES(?,?,?,?)";
+            String sql = "INSERT INTO TMAppOne.teacher(t_names,t_surnames,t_email,t_phone) VALUES(?,?,?,?)";
             if (Objects.nonNull(connection)) //Connection eger null deyilse ishlesin
             {
                 statement = connection.prepareStatement(sql); //sql-i connection ucun hazirla ve menimset statement-a
@@ -43,7 +43,7 @@ public class TeacherDao {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;  //Bu bizim javadaki cedvelimizdir.
-        String sql = "SELECT t.id,t.namess, t.surname, t.email, t.phone FROM tmappone.teacher t";
+        String sql = "SELECT t.id,t.t_names, t.t_surnames, t.t_email, t.t_phone FROM tmappone.teacher t";
         try {
             connection = DBConfig.getConnection2();
             if (Objects.nonNull(connection)) {
@@ -53,10 +53,10 @@ public class TeacherDao {
                 while (resultSet.next()) {
                    Teacher teacher = new Teacher();
                     teacher.setId(resultSet.getLong("ID"));
-                    teacher.setName(resultSet.getString("NAMESS"));
-                    teacher.setSurname(resultSet.getString("SURNAME"));
-                    teacher.setEmail(resultSet.getString("EMAIL"));
-                    teacher.setPhone(resultSet.getString("PHONE"));
+                    teacher.setName(resultSet.getString("T_NAMES"));
+                    teacher.setSurname(resultSet.getString("T_SURNAMES"));
+                    teacher.setEmail(resultSet.getString("T_EMAIL"));
+                    teacher.setPhone(resultSet.getString("T_PHONE"));
                     teachers.add(teacher);
                 }
             }
@@ -78,7 +78,7 @@ public class TeacherDao {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;  //Bu bizim javadaki cedvelimizdir.
-        String sql = "SELECT t.id,t.namess, t.surname, t.email, t.phone FROM tmappone.teacher t WHERE t.id=?";
+        String sql = "SELECT t.id,t.t_names, t.t_surnames, t.t_email, t.t_phone FROM tmappone.teacher t WHERE t.id=?";
         try {
             connection = DBConfig.getConnection2();
             if (Objects.nonNull(connection)) {
@@ -90,10 +90,10 @@ public class TeacherDao {
                 while (resultSet.next()) { //Cedveli oxuyuruq
 
                     teacher.setId(resultSet.getLong("ID"));
-                    teacher.setName(resultSet.getString("NAMESS"));
-                    teacher.setSurname(resultSet.getString("SURNAME"));
-                    teacher.setEmail(resultSet.getString("EMAIL"));
-                    teacher.setPhone(resultSet.getString("PHONE"));
+                    teacher.setName(resultSet.getString("T_NAMES"));
+                    teacher.setSurname(resultSet.getString("T_SURNAMES"));
+                    teacher.setEmail(resultSet.getString("T_EMAIL"));
+                    teacher.setPhone(resultSet.getString("T_PHONE"));
                     teachers.add(teacher); // cedveli yigiriq obyektin icine
                 }
 
@@ -116,7 +116,7 @@ public class TeacherDao {
         boolean isUpdated = false;
         Connection connection = null;
         PreparedStatement statement = null;
-        String sql = "UPDATE tmappone.teacher t Set t.namess=?, t.surname=?, t.email=?, t.phone=? Where t.id=?";
+        String sql = "UPDATE tmappone.teacher t Set t.t_names=?, t.t_surnames=?, t.t_email=?, t.t_phone=? Where t.id=?";
 
         try{
             connection = DBConfig.getConnection2(); //database ile yaratdigimiz connection-a qosuluruq

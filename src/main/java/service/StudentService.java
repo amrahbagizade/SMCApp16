@@ -17,19 +17,19 @@ public final class StudentService {
 
         System.out.println("Telebenin adini daxil edin:");
         String name = input.nextLine();
-        student.setName(name);
+        student.setS_name(name);
 
         System.out.println("Telebenin soyadini daxil edin:");
         String surname = input.nextLine();
-        student.setSurname(surname);
+        student.setS_surname(surname);
 
         System.out.println("Telebenin emailini daxil edin:");
         String email = input.nextLine();
-        student.setEmail(email);
+        student.setS_email(email);
 
         System.out.println("Telebenin nomresini daxil edin:");
         String phone = input.nextLine();
-        student.setPhone(phone);
+        student.setS_phone(phone);
 
         System.out.println(student);
         StudentDao.addStudent(student);
@@ -73,19 +73,19 @@ public final class StudentService {
         Student student = StudentDao.getStudentById(Long.valueOf(id)); //Id-e gore telebeni axtaririq.
         System.out.println("Telebenin adini daxil edin:");
         String name = input.nextLine();
-        student.setName(name);
+        student.setS_name(name);
 
         System.out.println("Telebenin soyadini daxil edin:");
         String surname = input.nextLine();
-        student.setSurname(surname);
+        student.setS_surname(surname);
 
         System.out.println("Telebenin emailini daxil edin:");
         String email = input.nextLine();
-        student.setEmail(email);
+        student.setS_email(email);
 
         System.out.println("Telebenin nomresini daxil edin:");
         String phone = input.nextLine();
-        student.setPhone(phone);
+        student.setS_phone(phone);
         StudentDao.updateStudentById(student); // yeni yaratdigimiz objecti atiriq metoda
 
     }
